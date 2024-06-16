@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+body,html,#root{
+  width: 100%;
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  height: 100%;
+  overflow-y: hidden; 
+  overflow-x: hidden;
+}
+.App {
+  text-align: center;
+  background-color:#ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.content-start{
+  text-align: center;
+  width: 80%;
+  height: 80%;
+  border-radius: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  color: rgb(3, 45, 96);
+  flex-direction: column;
+  padding: 1em;
+}
+.scene{
+  transition: all 2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: rgb(3, 45, 96);
+  flex-direction: column;
+  font-size: 35px;
+  height: 100%;
+  padding: 4em;
+  background-size: 58%,50%;
+  background-repeat: 
+  no-repeat;
+  background-position:center;
+  background-image: url("./scene/background1.webp");
+}
+.label-link{
+  font-size: 19px;
+  width: 100%;
+  margin-top: 20px;
+  text-align: left;
+}
+.content-app-main{
+  display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+.div-left-white{
+  height: 100%;
+    width: 31%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+    left: 0;
+}
+.div-right-white{
+  width: 31%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+    right: 0;
+}
+.scene{
+  width: 50%;
+  height: 100%;
+}
+
+.item-animation-finaly{
+  padding: 20px;
+  margin: 20px;
+  background-color: rgba(64, 87, 109, .3  );
+  border-radius: 15px;
+}
+.content-profile{
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.conteiner-certifications{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.final-animation{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.conteiner-final-animation{
+  display: flex;
+  width: 100%;
+  margin-top: 4em;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.title-of-information{
+  margin: 0;
+}
+.content-badges-into{
+  display: flex;
+  width: 50%;
+  /* clip-path: polygon(-25% 1%, 164% -10%, 84% 100%, 15% 99%); */
+  flex-wrap: wrap;
+  transform: matrix(1, 0, 0, 1, 3, 4);
+  align-items: center;
+  transform-origin: bottom;
+  justify-content: center;
+  margin-top: 14.5em;
+}
+#parent-modal-description{
+  margin:10px;
+}
+.detail-profile-user{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+.legend-of-title{
+  font-size: 22px;
+}
+.input-profile-url{
+  width: 367px;
+  height:100%;
+  padding: 0.5em;
+}
+.content-actions{
+  height: 18.52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alert{
+  position: absolute;
+  top: 10px;
+}
+
+@media (max-width: 1355px) {
+  .div-left-white{
+    width: 10%;
+  }
+  .div-right-white{
+    width: 10%;
+  }
+  .scene{
+    scale: 1.2;
+  }
+}
+
+@media (min-width: 1355px) {
+  .scene{
+    scale: 0.75;
+  }
+}
+
+@media (min-width: 1920px) {
+
+  .scene{
+    scale: 1;
+  }
+}
+.content-actions{
+  flex-direction: column;
+}
