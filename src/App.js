@@ -138,7 +138,7 @@ function App() {
   const fetchData = async () => {
       try {
         if(url){
-          const response = await axios.get('https://p6xwmk-1880.csb.app/data?username='+url);
+          const response = await axios.get('http://p6xwmk-1880.csb.app/data?username='+url);
           setData(response.data.result);
           setAnimation();
         }
