@@ -138,7 +138,7 @@ function App() {
   const fetchData = async () => {
       try {
         if(url){
-          const response = await axios.get('http://199.253.31.222/data?username='+url);
+          const response = await axios.get('https://4ul.ink/data?username='+url);
           setData(response.data.result);
           setAnimation();
         }
