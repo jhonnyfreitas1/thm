@@ -63,12 +63,12 @@ function App() {
       mediaRecorderRef.current = recorder;
 
       recorder.onstop = () => {
-        const blob = new Blob(chunks, { type: 'video/webm' });
+        const blob = new Blob(chunks, { type: 'video/mp4' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = 'TrailHead video history by you.webm';
+        a.download = 'TrailHead video history by you.mp4';
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
