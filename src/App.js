@@ -139,7 +139,7 @@ function App() {
       try {
         if(url){
           const response = await axios.get('https://4ul.ink/data?username='+url);
-          setData(response.data.result);
+          setData(response.data);
           setAnimation();
         }
       } catch (error) {

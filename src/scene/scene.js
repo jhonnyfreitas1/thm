@@ -31,6 +31,12 @@ function Scene(props) {
     setIsZoomedIn(false);
   };
   const mapStartRank = {
+    'Mountaineer':0,
+    'Adventure':0,
+    'Explorer':0,
+    'Hiker':0,
+    'Scout':0,
+    'Expeditioner':0,
     'Ranger':1,
     'Double Star Ranger':2,
     'Triple Star Ranger':3,
@@ -47,7 +53,7 @@ function Scene(props) {
 
           return () => controls.stop()
         },5000);
-
+        console.log(props.Data.rank);
     
         setTimeout(()=>{
           setstartRankPresentation(false);
@@ -104,7 +110,7 @@ function Scene(props) {
         setIsZoomedIn(true);
       },13000);
     }
-
+    console.log(props.Data);
   return (
     <motion.div className="scene"
           initial={{ y: 300 , opacity:  0 }}
@@ -197,7 +203,7 @@ function Scene(props) {
                 SuperBadges earned
               </motion.h1>
               <motion.h1 style={{marginTop:'-0.5em'}}>
-              {props.Data.super_badges.length}
+              {props.Data.Superbadges.length}
               </motion.h1>  
             </motion.div>:''
           }
@@ -209,7 +215,7 @@ function Scene(props) {
               
               transition={{ duration: 10, ease: 'easeInOut' }}
               style={{position:"absolute" , display:'flex', marginTop:'14em',width:'80%', flexWrap:'wrap', alignItems:'center', justifyContent:'center'}}>
-              {props.Data.super_badges.map((image, index) => (
+              {props.Data.Superbadges.map((image, index) => (
                 
                   <motion.img
                     key={index}
