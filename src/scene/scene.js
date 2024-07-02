@@ -181,7 +181,7 @@ function Scene(props) {
               /> 
               {index ==250   ?<p>...</p>: ''}
             </>
-          ))} <p style={{position:'absolute', marginTop:'30%'}}>and much more !!!</p>
+          ))} <p style={{position:'absolute', marginTop:'30%'}}>...</p>
         </motion.div>
     : ''} 
 
