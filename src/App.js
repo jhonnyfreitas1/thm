@@ -50,7 +50,9 @@ function App() {
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getDisplayMedia({
-        video: { cursor: 'none' } 
+        video: true,
+        cursor:"none",
+        
       });
       const recorder = new MediaRecorder(stream);
       const chunks = [];
@@ -66,6 +68,8 @@ function App() {
         const blob = new Blob(chunks, { type: 'video/mp4' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
+        stream.getTracks().forEach(track => track.stop());
+
         a.style.display = 'none';
         a.href = url;
         a.download = 'TrailHead video history by you.mp4';
