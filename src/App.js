@@ -56,7 +56,7 @@ function App() {
         
       });
       const recorder = new MediaRecorder(stream, {
-        mimeType: 'video/webm; codecs=vp8'
+        mimeType: 'video/mp4; codecs=vp8'
       });
 
       const chunks = [];
@@ -74,12 +74,12 @@ function App() {
             }
           };
       recorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: 'video/webm' });
+        const blob = new Blob(chunksRef.current, { type: 'video/mp4' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = `TrailHead video maker.webm`;
+        a.download = `TrailHead video maker`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
