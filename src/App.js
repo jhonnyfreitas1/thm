@@ -56,7 +56,7 @@ function App() {
         
       });
       const recorder = new MediaRecorder(stream, {
-        mimeType: 'video/mp4; codecs=vp8'
+         mimeType: 'video/webm; codecs=vp8'
       });
 
       const chunks = [];
