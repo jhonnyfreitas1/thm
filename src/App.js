@@ -32,6 +32,7 @@ function App() {
   const [placement, setPlacement] = React.useState();
   const [recording, setRecording] = useState(false);
   const mediaRecorderRef = useRef(null);
+  const chunksRef = useRef([]);
 
   const style = {
     position: 'absolute',
@@ -54,7 +55,10 @@ function App() {
         cursor:"none",
         
       });
-      const recorder = new MediaRecorder(stream);
+      const recorder = new MediaRecorder(stream, {
+        mimeType: 'video/webm; codecs=vp8'
+      });
+
       const chunks = [];
 
       recorder.ondataavailable = (event) => {
@@ -63,19 +67,23 @@ function App() {
         }
       };
       mediaRecorderRef.current = recorder;
-
+      
+    mediaRecorderRef.current.ondataavailable = (event) => {
+            if (event.data.size > 0) {
+              chunksRef.current.push(event.data);
+            }
+          };
       recorder.onstop = () => {
-        const blob = new Blob(chunks, { type: 'video/mp4' });
+        const blob = new Blob(chunksRef.current, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        stream.getTracks().forEach(track => track.stop());
-
         a.style.display = 'none';
         a.href = url;
-        a.download = 'TrailHead video history by you.mp4';
+        a.download = `TrailHead video maker.webm`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
+        chunksRef.current = [];
       };  
       
 
