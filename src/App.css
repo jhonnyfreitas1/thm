@@ -51,9 +51,9 @@ body,html,#root{
 }
 .label-link{
   font-size: 19px;
-  width: 100%;
   margin-top: 20px;
   text-align: left;
+  text-align: center;
 }
 .content-app-main{
   display: flex;
@@ -158,7 +158,6 @@ body,html,#root{
   padding: 0.5em;
 }
 .content-actions{
-  height: 18.52px;
   display: flex;
   align-items: center;
   justify-content: center;

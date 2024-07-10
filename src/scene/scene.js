@@ -5,8 +5,15 @@ import ProfileCard from '../profile/profile.js';
 import StarIcon from '@mui/icons-material/Star';
 import Rating from "@mui/material/Rating";
 import { ZoomIn } from '@mui/icons-material';
-
 import gif from '../imgs/gif.gif';
+
+import background1 from './background1.webp';
+import background2 from './background2.jpg';
+import background3 from './background3.jpg';
+import background4 from './background4.jpg';
+import background5 from './background5.jpg';
+import background6 from './background6.jpg';
+
 
 function Scene(props) {
   const [loading, setLoading] = React.useState(false);
@@ -45,6 +52,14 @@ function Scene(props) {
     'All Star Ranger':100,
   }
   
+  const mapBackground = {
+    '1':background1,
+    '2':background2,
+    '3':background3,
+    '4':background4,
+    '5':background5,
+    '6':background6
+  }
   useEffect(() => {
     
         setTimeout(()=>{
@@ -119,7 +134,7 @@ function Scene(props) {
             duration:  3,
             ease: "easeOut",
           }}
-          style={{  width: "1000px", height: "100%"}}
+          style={{  width: "1000px", height: "100%" ,backgroundImage:`url(${mapBackground[props.backgroundOption]})`}}
         >
     {/* Profile  */}
     <ProfileCard  Data={props.Data}></ProfileCard>
@@ -213,7 +228,7 @@ function Scene(props) {
               initial={{ x: '100vw'   }}
               animate={{ x: '-100vw'}}
               
-              transition={{ duration: 10, ease: 'easeInOut' }}
+              transition={{ duration: 12, ease: 'easeInOut' }}
               style={{position:"absolute" , display:'flex', marginTop:'14em',width:'80%', flexWrap:'wrap', alignItems:'center', justifyContent:'center'}}>
               {props.Data.Superbadges.map((image, index) => (
                 
