@@ -73,7 +73,6 @@ function Scene(props) {
 
           return () => controls.stop()
         },5000);
-        console.log(props.Data.rank);
     
         setTimeout(()=>{
           setstartRankPresentation(false);
@@ -143,8 +142,7 @@ function Scene(props) {
 
         if(props.showLastedCertAnim){
           handleStartAnimLastedCred();
-          console.log('lasted')
-          console.log(props.showLastedCertAnim);
+
           setlastImgCert('');
           setTimeout(()=>{
             setIsZoomedIn(true);
@@ -295,15 +293,15 @@ function Scene(props) {
           <div style={{width:'730px', marginTop:'8em'}}className='conteiner-certifications'>
           
             {props.Data.credenciais.sort((a, b) => {
-            const titleA = a.status.order; // Ignorar maiúsculas e minúsculas
-            const titleB = b.status.order; // Ignorar maiúsculas e minúsculas
+            const titleA = a.status.order;
+            const titleB = b.status.order; 
             if (titleA < titleB) {
               return -1;
             }
             if (titleA > titleB) {
               return 1;
             }
-            // titles must be equal
+            
             return 0;
           }).map((item,index)=>{
                 return <motion.div

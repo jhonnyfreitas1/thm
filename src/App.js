@@ -141,7 +141,6 @@ function App() {
     if(url != null && url.length> 0 && isValidTrailblazerURL(url)){
       fetchData();
     }else{
-      console.log(url);
       setError('Error, Fill in the url field correctly');
       setLoading(false);
       setTimeout(()=>{
@@ -242,7 +241,9 @@ function App() {
         >
           <Box sx={{  ...style, width: 800 }}>
           <iframe width="800" height="400" src="https://www.youtube.com/embed/mnjBDx-6w-E?si=kYk81qNiCdEC6uGG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            
+            <p>Note: Some players or social networks do not support the generated video format, it is necessary to convert the video using a tool such as https://capcut.com/
+            or record the presentation yourself with recording extensions or desktop recording programs</p>
+            <p>The recording option we provide is for convenience but not mandatory.</p>
           </Box>
         </Modal>
         <Box className='content-start'>
@@ -268,7 +269,7 @@ function App() {
             transition={{ duration:5 }}> 
 
             <form className='content-actions' onSubmit={handleClick}>
-              <label className='label-link'>Link Url</label>
+              <label className='label-link'>Link Url<span style={{color:"red"}}>*</span></label>
               <input required='required' id='user-url' name='user-url' onChange={handlesetValueOfUrl}  className='input-profile-url' type='text' placeholder='https://www.salesforce.com/trailblazer/xxx' />
               <label className='label-link'>Focus on the latest certification
                 <input type='checkbox' onChange={handleLastedCert} />
