@@ -39,16 +39,14 @@ function ProfileCard(props) {
     let contador =0;
     setInterval(() => {
       contador = contador+1;
-      console.log(contador);
+     
     },1000)
 
-    // Simulate a delay for revealing the image
     const timer = setTimeout(() => {
       setIsRevealed(true);
-    }, 7000); // 1 second delay
+    }, 7000); 
     
     let contCertByTimer= 0;
-    // Show imagens certifications
     if(props.Data.credenciais.length >0){
       let intervalTIme =4000;
 
@@ -118,11 +116,11 @@ function ProfileCard(props) {
             
                 {props.Data.credenciais.map((item,index)=>{
                   return <motion.div
-                  alt={'image of rank trailhead'} 
+                  alt={'image of certification'} 
                   initial={{ filter: 'contrast(0%)' }}
-                  animate={{ filter:showCredencials ? 'contrast(100%)' : 'contrast(0%)'}}
+                  animate={{ filter:showCredencials ?  (props.lastImgCert !=item.logoUrl  || props.continueShowingCertnew  ? 'contrast(100%)' : `contrast(${!props.showLastedCertAnim ? '100%':'0%'})`) : 'contrast(0%)'}}
                   transition={{ duration: 5 }}
-                  style={{backgroundSize:'130px',filter:'contrast(100%)', backgroundImage:`url(${item.logoUrl})`,backgroundPosition:'bottom',backgroundRepeat:'no-repeat', height:'75px', width: '75px', margin:'0px', padding:'0px'}}
+                  style={{backgroundSize:'130px', filter:'contrast(100%)', backgroundImage:`url(${item.logoUrl})`,backgroundPosition:'bottom',backgroundRepeat:'no-repeat', height:'75px', width: '75px', margin:'0px', padding:'0px'}}
                   />
                   })}
 

@@ -4,12 +4,12 @@ import Button from '@mui/material/Button';
 import ProfileCard from '../profile/profile.js';
 import StarIcon from '@mui/icons-material/Star';
 import Rating from "@mui/material/Rating";
-import { ZoomIn } from '@mui/icons-material';
 import gif from '../imgs/gif.gif';
+import CertificationAnnouncement from '../newCertification/newCertification.js';
 
 import background1 from './background1.webp';
 import background2 from './background2.jpg';
-import background3 from './background3.jpg';
+import background3 from './two.jpg';
 import background4 from './background4.jpg';
 import background5 from './background5.jpg';
 import background6 from './background6.jpg';
@@ -27,13 +27,18 @@ function Scene(props) {
 
   const [showLotOfCred, setshowLotOfCred] = useState(false);
   const [outOFSUper, setoutOFSUper] = useState(false);
+  const [lastImgCert, setlastImgCert] = useState(false);
+
+  const [continueShowingCertnew, setContinueShowingCertnew] = React.useState(false);
+
+
+  const [startCredAnim, setstartCredAnim] = useState(false);
 
   const handleZoomIn = () => {
-    setoutOFSUper(true);
-    setIsZoomedIn(true);
-    
+        setoutOFSUper(true);
+        setIsZoomedIn(true);
   };
-
+ 
   const handleReset = () => {
     setIsZoomedIn(false);
   };
@@ -73,7 +78,10 @@ function Scene(props) {
         setTimeout(()=>{
           setstartRankPresentation(false);
         },4000);
-        
+
+
+        let ultimaCERT= findLatestCertification();
+        setlastImgCert(ultimaCERT.logoUrl);
     });
 
    
@@ -94,7 +102,18 @@ function Scene(props) {
       
     }
 
-
+    const findLatestCertification = () => {
+      return props.Data.credenciais.reduce((latest, current) => {
+        if (!current.dateCompleted) {
+          return latest;
+        }
+        
+        const latestDate = latest.dateCompleted ? new Date(latest.dateCompleted) : new Date(0);
+        const currentDate = new Date(current.dateCompleted);
+        
+        return currentDate > latestDate ? current : latest;
+      }, {});
+    }
     function handleStartCredencials(){
 
       setTimeout(()=>{
@@ -122,10 +141,37 @@ function Scene(props) {
           setshowLotOfCred(false);
         }, 6000);
 
-        setIsZoomedIn(true);
+        if(props.showLastedCertAnim){
+          handleStartAnimLastedCred();
+          console.log('lasted')
+          console.log(props.showLastedCertAnim);
+          setlastImgCert('');
+          setTimeout(()=>{
+            setIsZoomedIn(true);
+            setstartCredAnim(false);
+
+          },props.Data.credenciais.length >10 ? 12500: 7000)
+        }else{
+          setIsZoomedIn(true);
+        }
       },13000);
     }
-    console.log(props.Data);
+
+    function handleStartAnimLastedCred(){
+      if(props.Data.credenciais.length >= 1){
+        if(props.Data.credenciais.length > 10){
+            setTimeout(()=>{
+              setstartCredAnim(true);
+              setContinueShowingCertnew(true);
+            },7000);
+        }else{
+          setstartCredAnim(true);
+          setContinueShowingCertnew(true);
+        }
+      } 
+      
+    }
+
   return (
     <motion.div className="scene"
           initial={{ y: 300 , opacity:  0 }}
@@ -137,7 +183,7 @@ function Scene(props) {
           style={{  width: "1000px", height: "100%" ,backgroundImage:`url(${mapBackground[props.backgroundOption]})`}}
         >
     {/* Profile  */}
-    <ProfileCard  Data={props.Data}></ProfileCard>
+    <ProfileCard  startCredAnim={startCredAnim}  continueShowingCertnew={continueShowingCertnew} lastImgCert={lastImgCert}  showLastedCertAnim={props.showLastedCertAnim} Data={props.Data}></ProfileCard>
 
 
       {/* START COUNT BADGES  */}
@@ -271,11 +317,14 @@ function Scene(props) {
 
           </div> : ''}
 
+      {startCredAnim  ?
+      <CertificationAnnouncement url={lastImgCert}/> : ''}
+
       {isZoomedIn  && !showLotOfCred? 
         <motion.div 
         
-          initial={{ scale: 0.2 }} // Escala inicial pequena
-          animate={{ scale: 1}} // Escala normal quando isZoomedIn é true
+          initial={{ scale: 0.2 }}
+          animate={{ scale: 1}}
           transition={{ duration: 5}}
           onAnimationComplete={props.stopRecording}
           className='conteiner-final-animation'>

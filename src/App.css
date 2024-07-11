@@ -9,6 +9,17 @@ body,html,#root{
   overflow-y: hidden; 
   overflow-x: hidden;
 }
+.newCert{
+  opacity: 1;
+  transform: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  background-size: contain;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
 .App {
   text-align: center;
   background-color:#ffffff;
