@@ -162,6 +162,7 @@ body,html,#root{
 }
 .legend-of-title{
   font-size: 22px;
+  margin-top:0;
 }
 .input-profile-url{
   width: 367px;
