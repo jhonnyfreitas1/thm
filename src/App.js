@@ -248,7 +248,7 @@ function App() {
         </Modal>
         <Box className='content-start'>
             <motion.h1
-            style={{margin:'0'}} 
+            style={{margin:'0' , fontSize:'50px'}} 
               animate={{ x: [50, 150, 0], opacity: 1, scale: 1 }}
               transition={{
                 duration: 2,
