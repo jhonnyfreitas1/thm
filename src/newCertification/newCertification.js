@@ -13,7 +13,7 @@ const CertificationAnnouncement =  props => {
             }}
         onAnimationComplete={() => setShowImage(true)}
       >
-        <h3 style={{fontSize:'37px', marginBottom:'-2em'}}>And This is my new certification</h3>
+        <h3 style={{fontSize:'37px', marginBottom:'-2em'}}>And... This is my new certification</h3>
       </motion.div>
       {showImage && (
         <motion.div className='newCert'
