@@ -193,7 +193,7 @@ function App() {
   const fetchData = async () => {
       try {
         if(url){
-          const response = await axios.get('https://cl38y7-1880.csb.app/data?username='+url);
+          const response = await axios.get('https://p6xwmk-1880.csb.app/data?username='+url);
           setData(response.data);
           setAnimation();
         }
